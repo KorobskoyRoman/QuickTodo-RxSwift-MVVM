@@ -33,3 +33,18 @@
 import UIKit
 import RxSwift
 
+protocol BindableType: AnyObject {
+  associatedtype ViewModelType
+  
+  var viewModel: ViewModelType! { get set }
+  
+  func bindViewModel()
+}
+
+extension BindableType where Self: UIViewController {
+  func bindViewModel(to model: Self.ViewModelType) { // привязываем только после загрузки вьюхи
+    viewModel = model // к этому моменту viewModel уже проинициализирована
+    loadViewIfNeeded()
+    bindViewModel() // привязываем UI
+  }
+}
