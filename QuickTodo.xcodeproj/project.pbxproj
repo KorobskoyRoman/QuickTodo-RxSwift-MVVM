@@ -72,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				3D932B011E4D245600E4BC3D /* QuickTodo */,
-				3D932B0E1E4D245600E4BC3D /* Info.plist */,
 				3D932B001E4D245600E4BC3D /* Products */,
 				D427EA404695B3BCA18A02B5 /* Pods */,
 				9096AF612ABBF92D8C68362C /* Frameworks */,
@@ -99,6 +98,7 @@
 				D8D4BF63C0585FD74DFD612D /* Model */,
 				D8D4B9F8F6973A366A9A7539 /* Controllers */,
 				D8D4B5CEA10908BDD31C9A47 /* Cells */,
+				3D932B0E1E4D245600E4BC3D /* Info.plist */,
 			);
 			path = QuickTodo;
 			sourceTree = "<group>";
@@ -482,6 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QuickTodo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.QuickTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QuickTodo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.QuickTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

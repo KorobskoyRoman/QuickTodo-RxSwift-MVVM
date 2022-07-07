@@ -41,15 +41,24 @@ enum Scene {
 extension Scene {
   func viewController() -> UIViewController {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+    let ncAppearence = UINavigationBarAppearance()
+    ncAppearence.configureWithOpaqueBackground()
+    ncAppearence.backgroundColor = .systemYellow
+    
     switch self {
     case .tasks(let viewModel):
       let nc = storyboard.instantiateViewController(withIdentifier: "Tasks") as! UINavigationController
+      nc.navigationBar.standardAppearance = ncAppearence
+      nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
       let vc = nc.viewControllers.first as! TasksViewController
       vc.bindViewModel(to: viewModel)
       return nc
       
     case .editTask(let viewModel):
       let nc = storyboard.instantiateViewController(withIdentifier: "EditTask") as! UINavigationController
+      nc.navigationBar.standardAppearance = ncAppearence
+      nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
       let vc = nc.viewControllers.first as! EditTaskViewController
       vc.bindViewModel(to: viewModel)
       return nc
