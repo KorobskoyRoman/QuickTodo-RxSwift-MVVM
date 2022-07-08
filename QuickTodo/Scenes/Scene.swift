@@ -36,6 +36,7 @@ import UIKit
 enum Scene {
   case tasks(TasksViewModel)
   case editTask(EditTaskViewModel)
+  case pushedEditTask(PushedEditTaskViewModel)
 }
 
 extension Scene {
@@ -62,6 +63,11 @@ extension Scene {
       let vc = nc.viewControllers.first as! EditTaskViewController
       vc.bindViewModel(to: viewModel)
       return nc
+      
+    case .pushedEditTask(let viewModel):
+      var vc = storyboard.instantiateViewController(withIdentifier: "PushedEditTask") as! PushedEditTaskViewController
+      vc.bindViewModel(to: viewModel)
+      return vc
     }
   }
 }
