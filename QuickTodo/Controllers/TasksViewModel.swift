@@ -60,14 +60,27 @@ struct TasksViewModel {
   
   lazy var editAction: Action<TaskItem, Swift.Never> = { this in
     return Action { task in
-      let editViewModel = EditTaskViewModel(task: task, coordinator: this.sceneCoordinator, updateAction: this.onUpdateTitle(task: task))
+      let editViewModel = PushedEditTaskViewModel(
+        task: task,
+        coordinator: this.sceneCoordinator,
+        updateAction: this.onUpdateTitle(task: task)
+      )
       return this.sceneCoordinator
-        .transition(to: Scene.editTask(editViewModel), type: .modal)
+//        .transition(to: Scene.editTask(editViewModel), type: .modal)
+        .transition(to: Scene.pushedEditTask(editViewModel), type: .push)
         .asObservable()
     }
   }(self)
   
+  // delete
+  lazy var deleteAction: Action<TaskItem, Void> = { (service: TaskServiceType) in
+    return Action { item in
+      return service.delete(task: item)
+    }
+  }(self.taskService)
   
+  // stats
+  lazy var statistics: Observable<TaskStatistics> = self.taskService.statistics()
 
   init(taskService: TaskServiceType, coordinator: SceneCoordinatorType) {
     self.taskService = taskService
