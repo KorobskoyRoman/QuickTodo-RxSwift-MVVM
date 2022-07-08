@@ -123,4 +123,29 @@ struct TaskService: TaskServiceType {
     }
     return result ?? .empty()
   }
+  
+  // stats
+  func numberOfTasks() -> Observable<Int> {
+    let result = withRealm("number of tasks") { realm -> Observable<Int> in
+      let tasks = realm.objects(TaskItem.self)
+      return Observable.collection(from: tasks)
+        .map(\.count)
+    }
+    return result ?? .empty()
+  }
+  
+  func statistics() -> Observable<TaskStatistics> {
+    let result = withRealm("Task statistics") { realm -> Observable<TaskStatistics> in
+      let tasks = realm.objects(TaskItem.self)
+      let todoTasks = tasks.filter("checked != nil")
+      return .combineLatest(
+        Observable.collection(from: tasks)
+          .map(\.count),
+        Observable.collection(from: todoTasks)
+          .map(\.count)) { all, done in
+            (todo: all - done, done: done)
+          }
+    }
+    return result ?? .empty()
+  }
 }

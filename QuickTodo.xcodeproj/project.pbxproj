@@ -13,6 +13,8 @@
 		3D932B0A1E4D245600E4BC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D932B091E4D245600E4BC3D /* Assets.xcassets */; };
 		3D932B0D1E4D245600E4BC3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D932B0B1E4D245600E4BC3D /* LaunchScreen.storyboard */; };
 		5C312075626ADE745487C19A /* Pods_QuickTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E84B7230DF98F63126EE99 /* Pods_QuickTodo.framework */; };
+		9CE8F94628776AD5006364CB /* PushedEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F94528776AD4006364CB /* PushedEditViewModel.swift */; };
+		9CE8F94828776ADC006364CB /* PushedEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F94728776ADC006364CB /* PushedEditTaskViewController.swift */; };
 		D8D4B084216A9B2C450E606F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D4B40D0383E56BA2D62F95 /* Scene.swift */; };
 		D8D4B29BEEE5F90B2EEFD433 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D4B9842A4352B148BF885E /* TasksViewModel.swift */; };
 		D8D4B38B0D79DD3BCEE7424A /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D4B0622FCB80BA64F522B8 /* TaskItem.swift */; };
@@ -39,6 +41,8 @@
 		3D932B091E4D245600E4BC3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D932B0C1E4D245600E4BC3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D932B0E1E4D245600E4BC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CE8F94528776AD4006364CB /* PushedEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushedEditViewModel.swift; sourceTree = "<group>"; };
+		9CE8F94728776ADC006364CB /* PushedEditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushedEditTaskViewController.swift; sourceTree = "<group>"; };
 		CA0023DCC87D954636594E4E /* Pods-QuickTodo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickTodo.release.xcconfig"; path = "Target Support Files/Pods-QuickTodo/Pods-QuickTodo.release.xcconfig"; sourceTree = "<group>"; };
 		D8D4B0622FCB80BA64F522B8 /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		D8D4B40D0383E56BA2D62F95 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				D8D4B5E9DE757713868B0E95 /* TasksViewController.swift */,
 				D8D4B669B9E5D5F0A890C14A /* EditTaskViewModel.swift */,
 				D8D4BC91C06633B3679DD8E7 /* EditTaskViewController.swift */,
+				9CE8F94528776AD4006364CB /* PushedEditViewModel.swift */,
+				9CE8F94728776ADC006364CB /* PushedEditTaskViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +335,8 @@
 				3D2E844A1E4E7A3D0075B16B /* BindableType.swift in Sources */,
 				D8D4BCFC41706D2948B976E9 /* TaskService.swift in Sources */,
 				D8D4B29BEEE5F90B2EEFD433 /* TasksViewModel.swift in Sources */,
+				9CE8F94828776ADC006364CB /* PushedEditTaskViewController.swift in Sources */,
+				9CE8F94628776AD5006364CB /* PushedEditViewModel.swift in Sources */,
 				D8D4B6D94E7B54B9C1F34CBD /* TasksViewController.swift in Sources */,
 				D8D4BFB6F8704E6619D678C9 /* EditTaskViewModel.swift in Sources */,
 				D8D4B9AE9D45F3E3679C95E0 /* EditTaskViewController.swift in Sources */,

@@ -43,15 +43,67 @@ class TasksViewController: UIViewController, BindableType {
   @IBOutlet var newTaskButton: UIBarButtonItem!
   
   var viewModel: TasksViewModel!
+  var dataSource: RxTableViewSectionedAnimatedDataSource<TaskSection>!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    configureDataSource()
+    
+    newTaskButton.rx.action = self.viewModel.onCreateTask()
     
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 60
+    setEditing(true, animated: false)
   }
   
   func bindViewModel() {
-
+    viewModel.sectionedItems // привязываем секции к таблице
+      .bind(to: tableView.rx.items(dataSource: dataSource))
+      .disposed(by: self.rx.disposeBag)
+    
+    // item selection
+    tableView.rx.itemSelected // нажатие на ячейку
+      .do(onNext: { [unowned self] indexPath in
+        self.tableView.deselectRow(at: indexPath, animated: false)
+      })
+      .map { [unowned self] indexPath in
+        try! self.dataSource.model(at: indexPath) as! TaskItem
+      }
+      .bind(to: viewModel.editAction.inputs)
+      .disposed(by: self.rx.disposeBag)
+    
+    // delete action
+    tableView.rx.itemDeleted
+      .map { [unowned self] indexPath in
+        try! self.tableView.rx.model(at: indexPath)
+      }
+      .subscribe(viewModel.deleteAction.inputs)
+      .disposed(by: self.rx.disposeBag)
+    
+    // stats
+    viewModel.statistics
+      .subscribe(onNext: { [weak self] stats in
+        let total = stats.done + stats.todo
+        self?.statisticsLabel.text = "Task to do: \(stats.todo). Tasks done: \(stats.done). Tasks total: \(total)."
+      })
+      .disposed(by: self.rx.disposeBag)
+  }
+  
+  private func configureDataSource() {
+    dataSource = RxTableViewSectionedAnimatedDataSource<TaskSection>(
+      configureCell: { [weak self] dataSource, tableView, indexPath, item in
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskItemCell", for: indexPath) as! TaskItemTableViewCell
+        if let self = self {
+          cell.configure(with: item, action: self.viewModel.onToggle(task: item))
+        }
+        return cell
+      },
+      titleForHeaderInSection: { dataSource, index in
+        dataSource.sectionModels[index].model
+      },
+      canEditRowAtIndexPath: { _, _ in
+        true
+      })
   }
 }
+

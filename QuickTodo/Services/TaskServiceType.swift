@@ -34,6 +34,9 @@ import Foundation
 import RxSwift
 import RealmSwift
 
+// stats
+typealias TaskStatistics = (todo: Int, done: Int)
+
 enum TaskServiceError: Error {
   case creationFailed
   case updateFailed(TaskItem)
@@ -55,4 +58,8 @@ protocol TaskServiceType {
   func toggle(task: TaskItem) -> Observable<TaskItem>
   
   func tasks() -> Observable<Results<TaskItem>>
+  
+  // stats
+  func numberOfTasks() -> Observable<Int>
+  func statistics() -> Observable<TaskStatistics>
 }
